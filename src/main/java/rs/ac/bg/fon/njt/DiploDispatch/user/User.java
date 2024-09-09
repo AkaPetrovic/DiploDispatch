@@ -8,6 +8,7 @@ import rs.ac.bg.fon.njt.DiploDispatch.role.Role;
 @Table(name = "user")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Getter
 @Setter
 @EqualsAndHashCode
