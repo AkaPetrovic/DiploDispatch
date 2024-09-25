@@ -26,7 +26,7 @@ public class DiploDispatchApplication {
 					.username("Aleksa")
 					.password(passwordEncoder.encode("AkaDiplo123"))
 					.email("aleksa.petrovic@fon.bg.ac.rs")
-					.role(Role.ADMIN)
+					.role(Role.MANAGER)
 					.build();
 
 			userRepository.save(user);
