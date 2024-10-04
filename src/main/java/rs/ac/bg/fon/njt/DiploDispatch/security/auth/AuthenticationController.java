@@ -10,7 +10,6 @@ import rs.ac.bg.fon.njt.DiploDispatch.user.User;
 public class AuthenticationController {
     private final AuthenticationService authenticationService;
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/login")
     public String login(@RequestBody User user) {
         return authenticationService.login(user);

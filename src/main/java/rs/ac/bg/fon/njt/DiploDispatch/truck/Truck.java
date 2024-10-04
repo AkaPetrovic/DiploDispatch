@@ -12,6 +12,7 @@ import java.util.List;
 @Table(name = "truck")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Getter
 @Setter
 @EqualsAndHashCode
