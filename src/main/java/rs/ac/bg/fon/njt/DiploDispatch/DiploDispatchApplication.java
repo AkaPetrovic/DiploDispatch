@@ -60,6 +60,30 @@ public class DiploDispatchApplication {
 
 			manufacturerRepository.save(manufacturerNew2);
 
+			Manufacturer manufacturerNew3 = Manufacturer.builder()
+					.name("Peterbilt")
+					.build();
+
+			manufacturerRepository.save(manufacturerNew3);
+
+			Manufacturer manufacturerNew4 = Manufacturer.builder()
+					.name("Freightliner")
+					.build();
+
+			manufacturerRepository.save(manufacturerNew4);
+
+			Manufacturer manufacturerNew5 = Manufacturer.builder()
+					.name("Kenworth")
+					.build();
+
+			manufacturerRepository.save(manufacturerNew5);
+
+			Manufacturer manufacturerNew6 = Manufacturer.builder()
+					.name("Mack")
+					.build();
+
+			manufacturerRepository.save(manufacturerNew6);
+
 			Truck truckNew1 = Truck.builder()
 					.model("Citywide LF")
 					.power(550)

@@ -1,11 +1,9 @@
 package rs.ac.bg.fon.njt.DiploDispatch.truck;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import rs.ac.bg.fon.njt.DiploDispatch.manufacturer.Manufacturer;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,8 +13,27 @@ import java.util.List;
 public class TruckController {
     private final TruckService truckService;
 
-    @GetMapping("/getByManufacturer")
-    public List<Truck> getTrucksByManufacturer(@RequestBody Manufacturer manufacturer) {
-        return truckService.getTrucksByManufacturer(manufacturer);
+    @GetMapping("/manufacturer/{id}")
+    public List<Truck> getTrucksByManufacturer(@PathVariable int id) {
+        return truckService.getTrucksByManufacturerId(id);
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<String> addTruck(@RequestBody Truck truck) {
+        truckService.addTruck(truck);
+        return new ResponseEntity<>("Success: Truck has been added successfully.", HttpStatus.CREATED);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<String> updateTruck(@RequestBody Truck truck) {
+        truckService.updateTruck(truck);
+        return new ResponseEntity<>("Success: Truck has been updated successfully.", HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> deleteTruck(@RequestBody Truck truck) {
+        truckService.deleteTruck(truck);
+        return new ResponseEntity<>("Success: Truck has been deleted successfully.", HttpStatus.OK);
     }
 }
+
