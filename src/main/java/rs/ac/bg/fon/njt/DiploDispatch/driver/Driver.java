@@ -13,6 +13,7 @@ import java.util.List;
 @Table(name = "driver")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Getter
 @Setter
 @EqualsAndHashCode

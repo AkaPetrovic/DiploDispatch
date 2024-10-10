@@ -30,4 +30,8 @@ public class TruckService {
     public void deleteTruck(Truck truck) {
         truckRepository.delete(truck);
     }
+
+    public List<Truck> getAllTrucks() {
+        return truckRepository.findAll();
+    }
 }

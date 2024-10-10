@@ -13,6 +13,11 @@ import java.util.List;
 public class TruckController {
     private final TruckService truckService;
 
+    @GetMapping()
+    public List<Truck> getAllTrucks() {
+        return truckService.getAllTrucks();
+    }
+
     @GetMapping("/manufacturer/{id}")
     public List<Truck> getTrucksByManufacturer(@PathVariable int id) {
         return truckService.getTrucksByManufacturerId(id);

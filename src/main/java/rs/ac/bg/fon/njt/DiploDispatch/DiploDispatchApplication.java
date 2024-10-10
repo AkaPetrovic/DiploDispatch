@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import rs.ac.bg.fon.njt.DiploDispatch.driver.Driver;
+import rs.ac.bg.fon.njt.DiploDispatch.driver.DriverRepository;
 import rs.ac.bg.fon.njt.DiploDispatch.manufacturer.Manufacturer;
 import rs.ac.bg.fon.njt.DiploDispatch.manufacturer.ManufacturerRepository;
 import rs.ac.bg.fon.njt.DiploDispatch.role.Role;
@@ -12,6 +14,8 @@ import rs.ac.bg.fon.njt.DiploDispatch.truck.Truck;
 import rs.ac.bg.fon.njt.DiploDispatch.truck.TruckRepository;
 import rs.ac.bg.fon.njt.DiploDispatch.user.User;
 import rs.ac.bg.fon.njt.DiploDispatch.user.UserRepository;
+
+import java.time.LocalDate;
 
 @SpringBootApplication
 public class DiploDispatchApplication {
@@ -24,7 +28,8 @@ public class DiploDispatchApplication {
 	CommandLineRunner runner(UserRepository userRepository,
 							 PasswordEncoder passwordEncoder,
 							 TruckRepository truckRepository,
-							 ManufacturerRepository manufacturerRepository) {
+							 ManufacturerRepository manufacturerRepository,
+							 DriverRepository driverRepository) {
 		return args -> {
 			User userNew1 = User.builder()
 					.firstname("Aleksa")
@@ -94,6 +99,15 @@ public class DiploDispatchApplication {
 					.build();
 
 			truckRepository.save(truckNew1);
+
+			Driver driverNew1 = Driver.builder()
+					.name("Marko")
+					.surname("Petrovic")
+					.birthdate(LocalDate.of(1995, 10, 21))
+					.truck(truckNew1)
+					.build();
+
+			driverRepository.save(driverNew1);
 		};
 	}
 }
