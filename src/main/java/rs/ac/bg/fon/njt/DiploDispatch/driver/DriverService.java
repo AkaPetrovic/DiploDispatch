@@ -34,4 +34,8 @@ public class DriverService {
     public void updateDriver(Driver driver) {
         driverRepository.save(driver);
     }
+
+    public void deleteDriver(Driver driver) {
+        driverRepository.delete(driver);
+    }
 }

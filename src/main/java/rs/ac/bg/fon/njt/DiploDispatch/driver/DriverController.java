@@ -32,7 +32,12 @@ public class DriverController {
     @PutMapping("/update")
     public ResponseEntity<String> updateTruck(@RequestBody Driver driver) {
         driverService.updateDriver(driver);
-        System.out.println(driver);
         return new ResponseEntity<>("Success: Driver has been updated successfully.", HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> deleteTruck(@RequestBody Driver driver) {
+        driverService.deleteDriver(driver);
+        return new ResponseEntity<>("Success: Driver has been deleted successfully.", HttpStatus.OK);
     }
 }
