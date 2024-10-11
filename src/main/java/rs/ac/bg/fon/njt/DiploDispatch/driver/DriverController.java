@@ -18,9 +18,21 @@ public class DriverController {
         return driverService.getAllDrivers();
     }
 
+    @GetMapping("/getByName")
+    public List<Driver> getDriversByName(@RequestParam(required = false) String name) {
+        return driverService.getDriversByName(name);
+    }
+
     @PostMapping("/add")
     public ResponseEntity<String> getAllDrivers(@RequestBody Driver driver) {
         driverService.addDriver(driver);
         return new ResponseEntity<>("Success: Driver has been added successfully.", HttpStatus.CREATED);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<String> updateTruck(@RequestBody Driver driver) {
+        driverService.updateDriver(driver);
+        System.out.println(driver);
+        return new ResponseEntity<>("Success: Driver has been updated successfully.", HttpStatus.OK);
     }
 }
