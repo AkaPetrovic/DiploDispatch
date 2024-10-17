@@ -24,7 +24,7 @@ public class DriverController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<String> getAllDrivers(@RequestBody Driver driver) {
+    public ResponseEntity<String> addDriver(@RequestBody Driver driver) {
         driverService.addDriver(driver);
         return new ResponseEntity<>("Success: Driver has been added successfully.", HttpStatus.CREATED);
     }

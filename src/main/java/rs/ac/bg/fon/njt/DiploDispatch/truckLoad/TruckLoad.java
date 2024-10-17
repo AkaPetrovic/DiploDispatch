@@ -1,5 +1,6 @@
 package rs.ac.bg.fon.njt.DiploDispatch.truckLoad;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import rs.ac.bg.fon.njt.DiploDispatch.driver.Driver;
@@ -14,6 +15,7 @@ import java.util.List;
 @Table(name = "truck_load")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -44,6 +46,8 @@ public class TruckLoad {
                 foreignKey = @ForeignKey(name = "FK_truck_load_driver"))
     private Driver driver;
 
-    @OneToMany(mappedBy = "truckLoad", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "truckLoad", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @ToString.Exclude
+    @JsonIgnore
     private List<LoadItem> loadItems = new ArrayList<>();
 }

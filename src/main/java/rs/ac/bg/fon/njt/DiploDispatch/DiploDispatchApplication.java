@@ -7,15 +7,21 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import rs.ac.bg.fon.njt.DiploDispatch.driver.Driver;
 import rs.ac.bg.fon.njt.DiploDispatch.driver.DriverRepository;
+import rs.ac.bg.fon.njt.DiploDispatch.loadItem.LoadItem;
+import rs.ac.bg.fon.njt.DiploDispatch.loadItem.LoadItemId;
+import rs.ac.bg.fon.njt.DiploDispatch.loadItem.LoadItemRepository;
 import rs.ac.bg.fon.njt.DiploDispatch.manufacturer.Manufacturer;
 import rs.ac.bg.fon.njt.DiploDispatch.manufacturer.ManufacturerRepository;
 import rs.ac.bg.fon.njt.DiploDispatch.role.Role;
 import rs.ac.bg.fon.njt.DiploDispatch.truck.Truck;
 import rs.ac.bg.fon.njt.DiploDispatch.truck.TruckRepository;
+import rs.ac.bg.fon.njt.DiploDispatch.truckLoad.TruckLoad;
+import rs.ac.bg.fon.njt.DiploDispatch.truckLoad.TruckLoadRepository;
 import rs.ac.bg.fon.njt.DiploDispatch.user.User;
 import rs.ac.bg.fon.njt.DiploDispatch.user.UserRepository;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @SpringBootApplication
 public class DiploDispatchApplication {
@@ -29,7 +35,9 @@ public class DiploDispatchApplication {
 							 PasswordEncoder passwordEncoder,
 							 TruckRepository truckRepository,
 							 ManufacturerRepository manufacturerRepository,
-							 DriverRepository driverRepository) {
+							 DriverRepository driverRepository,
+							 TruckLoadRepository truckLoadRepository,
+							 LoadItemRepository loadItemRepository) {
 		return args -> {
 			User userNew1 = User.builder()
 					.firstname("Aleksa")
@@ -108,6 +116,49 @@ public class DiploDispatchApplication {
 					.build();
 
 			driverRepository.save(driverNew1);
+
+			TruckLoad truckLoadNew1 = TruckLoad.builder()
+					.startDate(LocalDate.of(2024, 11, 21))
+					.startTime(LocalTime.of(15, 30))
+					.endDate(LocalDate.of(2024, 11, 24))
+					.endTime(LocalTime.of(9, 30))
+					.incomePerKilometer(2.52)
+					.driver(driverNew1)
+					.build();
+
+			truckLoadRepository.save(truckLoadNew1);
+
+			LoadItemId loadItemId1 = LoadItemId.builder()
+					.id(1L)
+					.build();
+
+			LoadItem item1 = LoadItem.builder()
+					.id(loadItemId1)
+					.name("Chair")
+					.dangerous(false)
+					.fragile(true)
+					.weight(2.54)
+					.volume(0.23)
+					.truckLoad(truckLoadNew1)
+					.build();
+
+			loadItemRepository.save(item1);
+
+			LoadItemId loadItemId2 = LoadItemId.builder()
+					.id(2L)
+					.build();
+
+			LoadItem item2 = LoadItem.builder()
+					.id(loadItemId2)
+					.name("Table")
+					.dangerous(false)
+					.fragile(true)
+					.weight(3.32)
+					.volume(1.03)
+					.truckLoad(truckLoadNew1)
+					.build();
+
+			loadItemRepository.save(item2);
 		};
 	}
 }

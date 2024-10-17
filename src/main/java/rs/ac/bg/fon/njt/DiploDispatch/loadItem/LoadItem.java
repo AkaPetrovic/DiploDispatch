@@ -8,6 +8,7 @@ import rs.ac.bg.fon.njt.DiploDispatch.truckLoad.TruckLoad;
 @Table(name = "load_item")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -21,6 +22,7 @@ public class LoadItem {
     @JoinColumn(name = "truck_load_id",
                 nullable = false,
                 foreignKey = @ForeignKey(name = "FK_truck_load"))
+    @ToString.Exclude
     private TruckLoad truckLoad;
 
     @Column(name = "name", nullable = false)
