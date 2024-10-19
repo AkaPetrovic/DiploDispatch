@@ -25,7 +25,7 @@ public class DriverService {
             if(driversByName.isEmpty()){
                 throw new NoSuchElementException("Error: No drivers have been found for the given name.");
             }
-            return driverRepository.findByName(name);
+            return driversByName;
         } else {
             throw new IllegalArgumentException("Error: Driver name cannot be empty.");
         }

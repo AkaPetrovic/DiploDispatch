@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
 public class TruckService {
     private final TruckRepository truckRepository;
 
-    public List<Truck> getTrucksByManufacturerId(int id) {
+    public List<Truck> getTrucksByManufacturerId(Long id) {
         List<Truck> trucksByManufacturerId = truckRepository.findByManufacturer_Id(id);
         if(trucksByManufacturerId.isEmpty()) {
             throw new NoSuchElementException("Error: No trucks have been found for the given manufacturer.");

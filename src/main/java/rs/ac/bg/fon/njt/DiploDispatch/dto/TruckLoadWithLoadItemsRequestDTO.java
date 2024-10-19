@@ -7,7 +7,7 @@ import rs.ac.bg.fon.njt.DiploDispatch.truckLoad.TruckLoad;
 import java.util.List;
 
 @Data
-public class AddTruckLoadRequestDTO {
+public class TruckLoadWithLoadItemsRequestDTO {
     private TruckLoad truckLoad;
     private List<LoadItem> loadItems;
 }

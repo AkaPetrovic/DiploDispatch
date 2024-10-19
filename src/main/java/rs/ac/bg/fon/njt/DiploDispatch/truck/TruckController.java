@@ -19,7 +19,7 @@ public class TruckController {
     }
 
     @GetMapping("/manufacturer/{id}")
-    public List<Truck> getTrucksByManufacturer(@PathVariable int id) {
+    public List<Truck> getTrucksByManufacturer(@PathVariable Long id) {
         return truckService.getTrucksByManufacturerId(id);
     }
 

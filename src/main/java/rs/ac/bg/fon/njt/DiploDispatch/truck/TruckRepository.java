@@ -7,5 +7,5 @@ import java.util.List;
 
 @Repository
 public interface TruckRepository extends JpaRepository<Truck, Long> {
-    List<Truck> findByManufacturer_Id(int manufacturerId);
+    List<Truck> findByManufacturer_Id(Long manufacturer_id);
 }
