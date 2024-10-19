@@ -41,4 +41,10 @@ public class TruckLoadController {
         truckLoadService.updateTruckLoad(truckLoadWithLoadItemsRequestDTO);
         return new ResponseEntity<>("Success: Truck load has been updated successfully.", HttpStatus.OK);
     }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> deleteTruckLoad(@RequestBody TruckLoadWithLoadItemsRequestDTO truckLoadWithLoadItemsRequestDTO) {
+        truckLoadService.deleteTruckLoad(truckLoadWithLoadItemsRequestDTO);
+        return new ResponseEntity<>("Success: Truck load has been deleted successfully.", HttpStatus.OK);
+    }
 }

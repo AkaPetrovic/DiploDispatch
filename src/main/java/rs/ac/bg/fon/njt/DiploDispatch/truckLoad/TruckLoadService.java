@@ -67,6 +67,10 @@ public class TruckLoadService {
         truckLoadRepository.save(truckLoad);
     }
 
+    public void deleteTruckLoad(TruckLoadWithLoadItemsRequestDTO truckLoadWithLoadItemsRequestDTO) {
+        truckLoadRepository.delete(truckLoadWithLoadItemsRequestDTO.getTruckLoad());
+    }
+
     public List<TruckLoad> getTruckLoadsByStartDate(String date) {
         if (date != null && !date.isEmpty()) {
             String[] dateSplit = date.split("-");
