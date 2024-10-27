@@ -33,8 +33,10 @@ public class SecurityConfig {
         return http
                 .cors(c -> c.configurationSource(corsConfigurationSource()))
                 .csrf(customizer -> customizer.disable())
-                .authorizeHttpRequests(request -> request.requestMatchers("api/login").permitAll()
-                        .anyRequest().authenticated())
+                .authorizeHttpRequests(request -> request.requestMatchers("api/login",
+                                                                          "api/users/check-if-exists-by-username",
+                                                                          "api/users/reset-password").permitAll()
+                                                         .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(new JWTFilter(jwtService, userDetailsService), UsernamePasswordAuthenticationFilter.class)
